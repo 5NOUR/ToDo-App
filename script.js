@@ -47,8 +47,6 @@ function addTask() {
     li.classList.toggle("completed", checkbox.checked);
     updateCounter();
   });
-  //   const completedCounter = document.getElementById("completed-counter");
-  //   const uncompletedCounter = document.getElementById("uncompleted-counter");
   function updateCounter() {
     const completedTasks = document.querySelectorAll(".completed").length;
     const uncompletedTasks =
@@ -59,6 +57,12 @@ function addTask() {
   checkbox.addEventListener("click", function () {
     li.classList.toggle("completed", checkbox.checked);
     updateCounter();
+  });
+  deleteBtn.addEventListener("click", function () {
+    if (confirm("Are You Sure You Want To Delete This Task?")) {
+      li.remove();
+      updateCounter();
+    }
   });
   updateCounter();
 }

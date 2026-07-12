@@ -2,38 +2,147 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>To-Do List</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TaskFlow | To-Do List</title>
+
+    <!-- CSS -->
     <link rel="stylesheet" href="style.css" />
+
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    />
+
+    <!-- Toastify CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css"
+    />
   </head>
+
   <body>
-    <!-- Creat a Container For The ToDo List -->
-    <div id="todo-container">
-      <!-- ToDo List Header -->
-      <div id="header">
-        <h1>To Do List</h1>
+    <div class="container">
+      <!-- ================= HEADER ================= -->
+
+      <header>
+        <h1>
+          <i class="fa-solid fa-list-check"></i>
+          TaskFlow
+        </h1>
+
+        <p>Organize your day efficiently.</p>
+      </header>
+
+      <!-- ================= STATS ================= -->
+
+      <section class="stats">
+        <div class="card">
+          <i class="fa-solid fa-list"></i>
+
+          <h2 id="all-counter">0</h2>
+
+          <span>All</span>
+        </div>
+
+        <div class="card completed-card">
+          <i class="fa-solid fa-circle-check"></i>
+
+          <h2 id="completed-counter">0</h2>
+
+          <span>Completed</span>
+        </div>
+
+        <div class="card pending-card">
+          <i class="fa-solid fa-clock"></i>
+
+          <h2 id="pending-counter">0</h2>
+
+          <span>Pending</span>
+        </div>
+      </section>
+
+      <!-- ================= SEARCH ================= -->
+
+      <div class="search-box">
+        <i class="fa-solid fa-magnifying-glass"></i>
+
+        <input type="text" id="search" placeholder="Search tasks..." />
       </div>
-      <div id="todo-form">
+
+      <!-- ================= FILTERS ================= -->
+
+      <div class="filters">
+        <button class="filter-btn active" data-filter="all">All</button>
+
+        <button class="filter-btn" data-filter="active">Active</button>
+
+        <button class="filter-btn" data-filter="completed">Completed</button>
+      </div>
+
+      <!-- ================= ADD TASK ================= -->
+
+      <div class="todo-form">
         <input
           type="text"
-          class="input-item"
-          name="input_box"
           id="input-box"
-          placeholder="Add Task"
+          placeholder="What do you need to do?"
         />
-        <!-- Add Button -->
-        <button id="input-button" onclick="addTask()">Add</button>
+
+        <button id="add-btn">
+          <i class="fa-solid fa-plus"></i>
+        </button>
       </div>
-      <h2>Task List</h2>
+
+      <!-- ================= EMPTY STATE ================= -->
+
+      <div id="empty-state">
+        <i class="fa-regular fa-clipboard"></i>
+
+        <h3>No Tasks Yet</h3>
+
+        <p>Add your first task to get started.</p>
+      </div>
+
+      <!-- ================= TASK LIST ================= -->
+
       <ul id="list-container"></ul>
-      <hr />
-      <!-- Task List Counter -->
-      <div class="counter-container">
-        <div id="task-conters">
-          Completed: <span id="completed-counter">0</span> | Uncompleted:
-          <span id="uncompleted-counter">0</span>
+
+      <!-- ================= FOOTER ================= -->
+
+      <footer>
+        <div class="footer-info">
+          <span>
+            <i class="fa-solid fa-circle-check"></i>
+
+            Completed:
+            <strong id="footer-completed">0</strong>
+          </span>
+
+          <span>
+            <i class="fa-solid fa-hourglass-half"></i>
+
+            Remaining:
+            <strong id="footer-pending">0</strong>
+          </span>
         </div>
-      </div>
+
+        <button id="delete-all-btn">
+          <i class="fa-solid fa-trash"></i>
+
+          Delete All
+        </button>
+      </footer>
     </div>
-    <script type="text/javascript" src="script.js"></script>
+
+    <!-- ================= LIBRARIES ================= -->
+
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.2/Sortable.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+
+    <!-- ================= APP ================= -->
+
+    <script src="script.js"></script>
   </body>
 </html>

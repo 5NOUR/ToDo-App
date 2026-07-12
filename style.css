@@ -1,76 +1,551 @@
+/* ===========================
+   GOOGLE FONT
+=========================== */
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+
+/* ===========================
+   RESET
+=========================== */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ===========================
+   ROOT COLORS
+=========================== */
+
+:root {
+  --bg: #0f172a;
+  --card: #1e293b;
+  --card-hover: #334155;
+  --primary: #3b82f6;
+  --primary-hover: #2563eb;
+  --success: #22c55e;
+  --danger: #ef4444;
+  --warning: #f59e0b;
+  --text: #f8fafc;
+  --text-light: #94a3b8;
+  --border: #334155;
+  --shadow: rgba(0, 0, 0, 0.35);
+}
+
+/* ===========================
+   BODY
+=========================== */
+
 body {
-  background: rgb(0, 0, 0);
-  background: radial-gradient(
-    circle,
-    rgb(0, 0, 0, 0.028124999999999956) 0%,
-    rgb(253, 187, 45, 1) 100%
-  );
-  font-family: Arial, Helvetica, sans-serif;
-  text-align: center;
-  margin-top: 50px;
+  font-family: "Poppins", sans-serif;
+  background: radial-gradient(circle at top, #1e293b 0%, #0f172a 70%);
+  min-height: 100vh;
+  color: var(--text);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 40px 15px;
 }
-#todo-container {
-  background: rgb(41, 33, 33);
-  width: 400px;
-  margin: 0 auto;
-  border: 2px solid #0033ff;
-  padding: 20px;
-  color: white;
+
+/* ===========================
+   CONTAINER
+=========================== */
+
+.container {
+  width: 650px;
+  max-width: 100%;
+  background: var(--card);
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 0 20px 60px var(--shadow);
+}
+
+/* ===========================
+   HEADER
+=========================== */
+
+header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+header h1 {
+  font-size: 35px;
+  margin-bottom: 10px;
+}
+
+header h1 i {
+  color: var(--primary);
+  margin-right: 10px;
+}
+
+header p {
+  color: var(--text-light);
+  font-size: 15px;
+}
+
+/* ===========================
+   STATS
+=========================== */
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.card {
+  background: #263447;
   border-radius: 15px;
-}
-#header {
-  margin: 5px;
-  font-size: 20px;
+  padding: 20px;
   text-align: center;
+  transition: 0.3s;
+  border: 1px solid transparent;
 }
-h1 {
+
+.card:hover {
+  transform: translateY(-5px);
+  border-color: var(--primary);
+}
+
+.card i {
+  font-size: 25px;
+  margin-bottom: 12px;
+}
+
+.card h2 {
+  font-size: 30px;
+  margin-bottom: 8px;
+}
+
+.card span {
+  color: var(--text-light);
+  font-size: 14px;
+}
+
+.completed-card i {
+  color: var(--success);
+}
+
+.pending-card i {
+  color: var(--warning);
+}
+
+/* ===========================
+   SEARCH
+=========================== */
+
+.search-box {
+  display: flex;
+  align-items: center;
+  background: var(--bg);
+  border-radius: 12px;
+  padding: 12px 15px;
   margin-bottom: 20px;
 }
-#input-box {
-  width: 200px;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  margin-right: 5px;
-  font-size: 20px;
+
+.search-box i {
+  color: var(--text-light);
 }
-#input-button {
-  font-size: 20px;
-  cursor: pointer;
-  transition: 0.4s;
-  padding: 10px;
+
+.search-box input {
+  flex: 1;
+  margin-left: 12px;
   border: none;
-  border-radius: 5px;
-  background-color: #2e60ea;
+  outline: none;
+  background: transparent;
+  color: white;
+  font-size: 15px;
 }
-#input-button:hover {
-  background-color: #9eb7fd;
+
+.search-box input::placeholder {
+  color: var(--text-light);
 }
-ul {
-  list-style: none;
-  padding: 0;
-  margin-top: 20px;
-  text-align: left;
+
+/* ===========================
+   FILTERS
+=========================== */
+
+.filters {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 25px;
 }
-li {
-  border: 1px solid white;
-  border-radius: 5px;
+
+.filter-btn {
+  flex: 1;
+  border: none;
+  padding: 12px;
+  border-radius: 10px;
+  cursor: pointer;
+  background: var(--bg);
+  color: white;
+  transition: 0.3s;
+}
+
+.filter-btn:hover {
+  background: var(--primary);
+}
+
+.filter-btn.active {
+  background: var(--primary);
+}
+
+/* ===========================
+   ADD TASK
+=========================== */
+
+.todo-form {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 25px;
+}
+
+#input-box {
+  flex: 1;
+  background: var(--bg);
+  border: 2px solid transparent;
+  color: white;
+  border-radius: 12px;
+  padding: 15px;
+  outline: none;
+  font-size: 16px;
+  transition: 0.3s;
+}
+
+#input-box:focus {
+  border-color: var(--primary);
+}
+
+#input-box::placeholder {
+  color: var(--text-light);
+}
+
+#add-btn {
+  width: 60px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  background: var(--primary);
+  color: white;
+  font-size: 18px;
+  transition: 0.3s;
+}
+
+#add-btn:hover {
+  background: var(--primary-hover);
+  transform: scale(1.05);
+}
+
+#add-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ===========================
+   EMPTY STATE
+=========================== */
+
+#empty-state {
+  text-align: center;
+  padding: 45px 20px;
+  color: var(--text-light);
+}
+
+#empty-state i {
+  font-size: 70px;
+  margin-bottom: 20px;
+  color: var(--primary);
+}
+
+#empty-state h3 {
   margin-bottom: 10px;
-  padding: 10px;
-  margin-top: 10px;
 }
+
+#empty-state p {
+  font-size: 14px;
+}
+
+/* ===========================
+   TASK LIST
+=========================== */
+
+#list-container {
+  list-style: none;
+}
+
+#list-container li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #263447;
+  padding: 18px;
+  border-radius: 15px;
+  margin-bottom: 15px;
+  border: 1px solid transparent;
+  transition: 0.3s;
+  animation: fadeIn 0.3s ease;
+}
+
+#list-container li:hover {
+  border-color: var(--primary);
+  transform: translateY(-2px);
+}
+
+#list-container label {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+  cursor: pointer;
+}
+
+#list-container input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  accent-color: var(--success);
+  cursor: pointer;
+}
+
+#list-container span {
+  font-size: 16px;
+  word-break: break-word;
+}
+/* ===========================
+   TASK ACTIONS
+=========================== */
+
+.task-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
 .edit-btn,
 .delete-btn {
-  float: right;
-  color: crimson;
-  cursor: pointer;
-  margin: 3px 5px;
+  width: 38px;
+  height: 38px;
   border: none;
-  padding: auto;
-  background: none;
+  border-radius: 10px;
+  cursor: pointer;
+  color: white;
+  transition: 0.3s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+
+.edit-btn {
+  background: var(--primary);
+}
+
+.edit-btn:hover {
+  background: var(--primary-hover);
+  transform: scale(1.08);
+}
+
+.delete-btn {
+  background: var(--danger);
+}
+
+.delete-btn:hover {
+  transform: scale(1.08);
+  filter: brightness(1.1);
+}
+
+/* ===========================
+   COMPLETED TASK
+=========================== */
+
 .completed {
+  opacity: 0.65;
+  background: #1b2636 !important;
+  border-color: #3d4c63 !important;
+}
+
+.completed span {
   text-decoration: line-through;
-  color: gray;
-  border: 1px solid gray;
+  color: var(--text-light);
+}
+
+/* ===========================
+   FOOTER
+=========================== */
+
+footer {
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+}
+
+.footer-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  color: var(--text-light);
+  font-size: 15px;
+}
+
+.footer-info strong {
+  color: white;
+}
+
+.footer-info i {
+  margin-right: 6px;
+}
+
+/* ===========================
+   DELETE ALL BUTTON
+=========================== */
+
+#delete-all-btn {
+  width: 100%;
+  border: none;
+  padding: 15px;
+  border-radius: 12px;
+  cursor: pointer;
+  background: var(--danger);
+  color: white;
+  font-size: 15px;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+#delete-all-btn:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.1);
+}
+
+#delete-all-btn i {
+  margin-right: 8px;
+}
+
+/* ===========================
+   SCROLLBAR
+=========================== */
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  border-radius: 100px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-hover);
+}
+
+/* ===========================
+   ANIMATIONS
+=========================== */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-out {
+  animation: fadeOut 0.25s forwards;
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  to {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+}
+
+/* ===========================
+   RESPONSIVE
+=========================== */
+
+@media (max-width: 700px) {
+  .container {
+    padding: 20px;
+  }
+
+  header h1 {
+    font-size: 28px;
+  }
+
+  .stats {
+    grid-template-columns: 1fr;
+  }
+
+  .filters {
+    flex-direction: column;
+  }
+
+  .todo-form {
+    flex-direction: column;
+  }
+
+  #add-btn {
+    width: 100%;
+    height: 50px;
+  }
+
+  .footer-info {
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-start;
+  }
+
+  #list-container li {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+
+  .task-actions {
+    width: 100%;
+    justify-content: flex-end;
+  }
+}
+
+@media (max-width: 450px) {
+  body {
+    padding: 15px;
+  }
+
+  header h1 {
+    font-size: 24px;
+  }
+
+  .card h2 {
+    font-size: 24px;
+  }
+
+  #input-box {
+    font-size: 15px;
+  }
+
+  .search-box input {
+    font-size: 14px;
+  }
+
+  .filter-btn {
+    font-size: 14px;
+  }
 }

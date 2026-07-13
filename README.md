@@ -38,8 +38,8 @@ todo-app/
 
 ## 📸 Screenshot
 
-![Todo App](./assets/images/screenShot1.png)
-![Todo App](./assets/images/screenShot2.png)
+![Todo App](./assets/screenShot1.png)
+![Todo App](./assets/screenShot2.png)
 
 ## 🌐 Live Demo
 

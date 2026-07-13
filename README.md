@@ -42,8 +42,7 @@ todo-app/
 ![Todo App](./assets/screenShot2.png)
 
 ## 🌐 Live Demo
-
-(Add GitHub Pages link here.)
+https://5nour.github.io/ToDo-App/
 
 ## 👨‍💻 Author
 
